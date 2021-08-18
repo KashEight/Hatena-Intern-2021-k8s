@@ -21,14 +21,18 @@ func Render(ctx context.Context, src string) (string, error) {
 
 	counter++
 
+	var newSrc string
+
 	if strings.Contains(src, "<+>") {
-		_ = strings.Replace(src, "<+>", fmt.Sprintf("%07d", counter), -1)
+		newSrc = strings.Replace(src, "<+>", fmt.Sprintf("%07d", counter), -1)
+	} else {
+		newSrc = src
 	}
 
 	// Convert Markdown
 
 	var w bytes.Buffer
-	if err := goldmark.Convert([]byte(src), &w); err != nil {
+	if err := goldmark.Convert([]byte(newSrc), &w); err != nil {
 		return "", errors.New("error")
 	}
 
