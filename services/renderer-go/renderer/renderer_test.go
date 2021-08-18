@@ -9,7 +9,7 @@ import (
 
 func Test_Render(t *testing.T) {
 	src :=
-	`# hoge
+		`# hoge
 
 	- foo
 	- bar
@@ -18,11 +18,11 @@ func Test_Render(t *testing.T) {
 	html, err := Render(context.Background(), src)
 	assert.NoError(t, err)
 	assert.Equal(t,
-	`<h1>hoge</h1>
+		`<h1>hoge</h1>
 	<ul>
 	<li>foo</li>
 	<li>bar</li>
 	</ul>
 	<p><a href="https://example.com">url</a></p>`,
-	html)
+		html)
 }
