@@ -8,8 +8,21 @@ import (
 )
 
 func Test_Render(t *testing.T) {
-	src := `foo https://google.com/ bar`
+	src :=
+	`# hoge
+
+	- foo
+	- bar
+
+	[url](https://example.com)`
 	html, err := Render(context.Background(), src)
 	assert.NoError(t, err)
-	assert.Equal(t, `foo <a href="https://google.com/">https://google.com/</a> bar`, html)
+	assert.Equal(t,
+	`<h1>hoge</h1>
+	<ul>
+	<li>foo</li>
+	<li>bar</li>
+	</ul>
+	<p><a href="https://example.com">url</a></p>`,
+	html)
 }
