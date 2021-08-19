@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - app.yaml
 - db.yaml
-- test.yaml
 secretGenerator:
 - name: blog-app-secret
   files:
