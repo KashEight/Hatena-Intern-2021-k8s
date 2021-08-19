@@ -26,7 +26,7 @@ func Fetcher(ctx context.Context, url string) (string, error) {
 	strBody := string(b)
 	titleStartIndex := strings.Index(strBody, "<title>")
 	titleEndIndex := strings.Index(strBody, "</title>")
-	title := strBody[titleStartIndex:titleEndIndex]
+	title := strBody[titleStartIndex:titleEndIndex] // ここおそらくバグる
 
 	return title, nil
 }
