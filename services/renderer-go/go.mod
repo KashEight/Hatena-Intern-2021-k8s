@@ -3,6 +3,7 @@ module github.com/hatena/Hatena-Intern-2021/services/renderer-go
 go 1.14
 
 require (
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0
 	github.com/stretchr/testify v1.7.0
 	github.com/yuin/goldmark v1.4.0 // indirect
