@@ -44,10 +44,21 @@ docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2021-protoc-ts \
     --ts_out=grpc_js:ts/renderer \
     renderer.proto
 
-mkdir -p ../services/renderer-go/pb ../services/renderer-ts/pb ../services/blog/pb
+mkdir -p go/fetcher
+docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2021-protoc-go \
+  protoc \
+    --go_out=go/fetcher \
+    --go_opt=paths=source_relative \
+    --go-grpc_out=go/fetcher \
+    --go-grpc_opt=paths=source_relative \
+    fetcher.proto
+
+mkdir -p ../services/renderer-go/pb ../services/renderer-ts/pb ../services/blog/pb ../services/fetcher/pb
 cp -r ./go/renderer ../services/renderer-go/pb
 cp -r ./ts/renderer ../services/renderer-ts/pb
 cp -r ./go/renderer ../services/blog/pb
+cp -r ./go/fetcher ../services/renderer-go/pb
+cp -r ./go/fetcher ../services/fetcher/pb
 
 mkdir -p ts/health-check
 docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2021-protoc-ts \

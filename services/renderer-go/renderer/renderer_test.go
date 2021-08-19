@@ -18,11 +18,6 @@ func Test_Render(t *testing.T) {
 	html, err := Render(context.Background(), src)
 	assert.NoError(t, err)
 	assert.Equal(t,
-		`<h1>hoge</h1>
-	<ul>
-	<li>foo</li>
-	<li>bar</li>
-	</ul>
-	<p><a href="https://example.com">url</a></p>`,
+		`<h1>hoge</h1>\n<ul>\n<li>foo</li>\n<li>bar</li>\n</ul>\n<p><a href=\"https://example.com\">url</a></p>`,
 		html)
 }
